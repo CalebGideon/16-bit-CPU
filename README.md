@@ -8,7 +8,7 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
     <li><a href="#section1">Breakdown</a>
       <ul>
         <li><a href="#purpose">Purpose</a></li>
-        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#pipeline">Pipeline</a></li>
         <li><a href="#limitations">Limitations</a></li>
       </ul>
     </li>
@@ -21,6 +21,65 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
       </ul>
     </li>
   </ul>
+</div>
+
+<div>
+  <h3 id="purpose">Purpose</h3>
+  <p>The CPU design is developed entirely in Logisim: <a = "https://sourceforge.net/projects/circuit/"><b>Click here to download the latest version</b></a></p>
+  <br>
+  <p>This repository provides a detailed look into the development for a 16-bit unsigned CPU. The idea is to teach people about the fundamentals of hardware development, in addition to showcasing assembly to machine code conversion, which tends to be overlooked by most CS graduates. The repository will take a look at:</p>
+  <ul>
+    <li>The different opcodes a CPU might use</li>
+    <li>The pipeline of a CPU including: </li>
+    <ul>
+      <li>ROM to RAM parallel storage similar to the Harvards System</li>
+      <li>Double Dabble algorithm to convert Binary to Binary Coded Decimal <b>BCD</b></li>
+      <li>How jumping works within CPU architecture, and more importantly, how it works with limited opcode space</li>
+      <li>How to generate immediate value storage</li>
+      <li>A look into ALU, General Register and Flag Register design</li>
+      <li>How to develop a control unit</li>
+    </ul>
+    <li>How to create an assembly language to write programs in human readable and not machine code (screw that!)</li>
+    <li>How to display data, and different clock speeds to manage complex algorithms such as Double Dabble</li>
+  </ul>
+
+  <br>
+
+  <p><b>Hopefully you learn something, and feel free to download the CPU in full. If you're uploading it to people, please provide me credit, but otherwise, rip it to shreds and learn as much as you can!</b></p>
+  
+</div>
+
+<div>
+  <h3 id="pipeline">Pipeline</h3>
+
+  <h4><b>Program Counter (PC)</b></h4>
+
+  <h4><b>Read Only Memory (ROM)</b></h4>
+  
+  <h4><b>Random Access Memory (RAM)</b></h4>
+
+  <h4><b>RAM Check</b></h4>
+
+  <h4><b>COPY</b></h4>
+
+  <h4><b>Control Unit (CU)</b></h4>
+
+  <h4><b>Flag Register (FR)</b></h4>
+
+  <h4><b>ROM Immediate</b></h4>
+
+  <h4><b>RAM Immediate</b></h4>
+
+  <h4><b>General Register (GR)</b></h4>
+
+  <h4><b>Arithmetic Logic Unit (ALU)</b></h4>
+
+  <h4><b>Double Dabble Pipeline (DDP)</b></h4>
+
+  <h4><b>Visual Display</b></h4>
+  
+
+  
 </div>
 
 <div>
