@@ -57,58 +57,86 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
   <br>
 
   <p><b>NOTE!</b>Hopefully with time, this README will cover every aspect of this image, as the complexity can seem incredibly daunting, but with adequate knowledge of each component, the process of CPU design is learnable. While this document will not go over what multiplexers are, demultiplexers, tunnels, bus's, sub-circuits and the basics of Logisim, I will try my best to go over the abstractable concepts of what exactly the CPU needs</p>
+
+  <br>
   
   <h4><b>Program Counter (PC)</b></h4>
 
   <img src="README_IMG's/PC.jpg">
 
+  <br>
+
   <h4><b>Read Only Memory (ROM)</b></h4>
 
   <img src="README_IMG's/ROM.jpg">
+
+  <br>
   
   <h4><b>Random Access Memory (RAM)</b></h4>
 
    <img src="README_IMG's/RAM.jpg">
 
+  <br>
+  
   <h4><b>RAM Check</b></h4>
 
    <img src="README_IMG's/RAMON.jpg">
+
+   <br>
 
   <h4><b>COPY</b></h4>
 
    <img src="README_IMG's/COPY.jpg">
 
+   <br>
+
   <h4><b>Control Unit (CU)</b></h4>
 
    <img src="README_IMG's/Control_Unit.jpg">
+
+   <br>
 
   <h4><b>Flag Register (FR)</b></h4>
 
    <img src="README_IMG's/Flag_Register.jpg">
 
+   <br>
+
   <h4><b>ROM Immediate</b></h4>
 
    <img src="README_IMG's/ROM_IM.jpg">
+
+   <br>
 
   <h4><b>RAM Immediate</b></h4>
 
    <img src="README_IMG's/RAM_IM.jpg">
 
+   <br>
+
   <h4><b>General Register (GR)</b></h4>
 
    <img src="README_IMG's/General_Register.jpg">
+
+   <br>
 
   <h4><b>Arithmetic Logic Unit (ALU)</b></h4>
 
    <img src="README_IMG's/ALU.jpg">
 
+   <br>
+
   <h4><b>Double Dabble Pipeline (DDP)</b></h4>
 
    <img src="README_IMG's/View_Pipe.jpg">
 
+   <br>
+
   <h4><b>Visual Display</b></h4>
   
    <img src="README_IMG's/Visual_Dis.jpg">
+
+   <br>
   
 </div>
 
