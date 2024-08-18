@@ -56,13 +56,26 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <br>
 
-  <p><b>NOTE!</b>Hopefully with time, this README will cover every aspect of this image, as the complexity can seem incredibly daunting, but with adequate knowledge of each component, the process of CPU design is learnable. While this document will not go over what multiplexers are, demultiplexers, tunnels, bus's, sub-circuits and the basics of Logisim, I will try my best to go over the abstractable concepts of what exactly the CPU needs</p>
+  <p><b>NOTE!</b>Hopefully with time, this README will cover every aspect of this image, as the complexity can seem incredibly daunting, but with adequate knowledge of each component, the process of CPU design is learnable. While this document will not go over what multiplexers are, demultiplexers, tunnels, bus's, sub-circuits, spillters, and the basics of Logisim, I will try my best to go over the abstractable concepts of what exactly the CPU needs</p>
 
   <br>
   
   <h4><b>Program Counter (PC)</b></h4>
 
   <img src="README_IMG's/PC.jpg">
+
+  <p><b>It all begins with a clock. MASTER_CLOCK ticks, incrementing the entire CPU's pipeline by one iteration based on a High/Low frequency shift. On the positive tick, the following occurs:</b></p>
+
+  <ol>
+    <li>A signal is sent to the general register to activate its ability to have a value written to it (the box with 000 to the right of MUX)</li>
+    <li>The MUX -> multiplexer to its left, takes in four values, with the choice of 4 values decided by a selector -> The JUMP/BOUNCE/JUMP_NZERO opcodes./b>:</li>
+    <ul>
+      <li>When JUMP/BOUNCE/JUMP_NZERO are all 0, the selector value is -> 00. Thus, the program counter sends a value to the incrementer (box with cin/cout), and increments the PC's current value (lets say 12), by 1 -> (how by one? The constant 0001 is sent through) This gets fed back into the general register, and increments the ROM for later </li>
+      <li>When JUMP is true, the selector value is -> 01. Thus, the program counter will simply send through the 16-bit jump address that shifts the RAM memory to a different location. (RAM at memory location 12? jump address is 1? Program Counter becomes 0001!)</li>
+      <li>When Bouncer is true, the selector value is -> 10. Thus, the program counter will check whether a previous Comparison yielded true or false (Think if/while loop conditions). If true, it jumps the program counter to a memory location, else (if/while loop ends), it switch's back to the default 00's single increment logic</li>
+      <li>When JUMP_NZERO is true, the selector value is -> 11. (Note: This can be seen by the two or gates to the right of JUMP/BOUNCER/JUMP_NZERO, setting both results to true in this case). Here, the program will check if a zero flag is set to true. If so, then a for loop has just ended (think for i less than size, where i is now 10 and size is 10), else it defaults to single 00 increment</li>
+    </ul>
+  </ol>
 
   <br>
 
