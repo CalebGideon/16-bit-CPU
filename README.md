@@ -56,7 +56,11 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <br>
 
+  <div>
+
   <p><b>NOTE!</b>Hopefully with time, this README will cover every aspect of this image, as the complexity can seem incredibly daunting, but with adequate knowledge of each component, the process of CPU design is learnable. While this document will not go over what multiplexers are, demultiplexers, tunnels, bus's, sub-circuits, spillters, and the basics of Logisim, I will try my best to go over the abstractable concepts of what exactly the CPU needs</p>
+
+  </div>
 
   <br>
   
@@ -75,6 +79,7 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
       <li>When Bouncer is true, the selector value is -> 10. Thus, the program counter will check whether a previous Comparison yielded true or false (Think if/while loop conditions). If true, it jumps the program counter to a memory location, else (if/while loop ends), it switch's back to the default 00's single increment logic</li>
       <li>When JUMP_NZERO is true, the selector value is -> 11. (Note: This can be seen by the two or gates to the right of JUMP/BOUNCER/JUMP_NZERO, setting both results to true in this case). Here, the program will check if a zero flag is set to true. If so, then a for loop has just ended (think for i less than size, where i is now 10 and size is 10), else it defaults to single 00 increment</li>
     </ul>
+    <li>Finally, the new PC count is sent to either the ROM or RAM, and thus the next memory location in either is sent out to be processed by the CPU!</li>
   </ol>
 
   <br>
@@ -83,17 +88,34 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <img src="README_IMG's/ROM.jpg">
 
+  <p><b>The ROM stores the startup of a program. If you also don't have a harddrive, it can be used to store programs which get fed into the RAM. Each ROM gets sent instructions -> Calculate fibonacci, where the first and last instructions are always a COPY. When COPY is first reached (Start of ROM), it tells the program to copy all of the ROM into the RAM to run the program, once the second COPY is reached (end of ROM), it sets RAM active to true, and the PC NOW points to the RAM to increment that. </b></p>
+
+   <p><b>Notice the seperating splitters after the instruction is outputted at "D"?</b> This is because 16-bit instructions are split into usually 4 thingsL</p>
+
+   <ol>
+     <li>4 bit opcodes: Can very from 3 to 4 to 5. It stores the opcodes which are the instructions to tell the CPU what it is going to do with THIS 16-bit memory. E.g., do an ADD calculation, do JUMP, perhaps a Comparison?</li>
+     <li>The next 8 bits will either hold an immediate value -> Value from 0 to 255 stored directly in ROM. Or two 4 bit-s -> Points tow one of the 16 bit general register which hold a specific immediate or internally calculated value from two initial immediate values</li>
+     <li>The last 4 bits vary depending on opcodes, usually it specifys a general register to store a calculated ALU value, but a breakdown of this CPU's opcodes will go into greater depth on how this occurs</li>
+   </ol>
+
   <br>
   
   <h4><b>Random Access Memory (RAM)</b></h4>
 
    <img src="README_IMG's/RAM.jpg">
 
+   <p><b>Why ROM and RAM? ROM does not allow writing to memory. In order to store values back into ROM and create a program that can run indefinatley and be useful, the ROM's data has to be sent to RAM for RAM to process each memory instruction. It uses the same splitter functionality like ROM, with the additive of an input "D" that alows the CPU to WRITE to an empty memory addres</b></p>
+
   <br>
   
   <h4><b>RAM Check</b></h4>
 
    <img src="README_IMG's/RAMON.jpg">
+
+  <ul>
+    <li>The single green 0 indicates a D Flop -> Like a general register, but only storing a single bit 1/0 -> True/False.</li>
+    <li>When the ROM has triggered its second COPY opcode, it sends a signal to this D Flip Flip, turning it to 1. This causes the PC to re-direct its memory location check to RAM. It also resets the PC to 0 (so the RAM can start from its first memory register index)</li>
+  </ul>
 
    <br>
 
@@ -103,11 +125,20 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
    <br>
 
+   <p><b>Here we can see an active signal from the COPY opcode (More on the output singals from Control Unit later) When it becomes true, it sets the ROM to copy its contents over to RAM. When off, it means that it will be sent to the rest of the CPU. The RAM_ON D Flip's 1/true signal as stated before, is sent through, and if so, instead resets the entire program when RAM reach's the copy instead.</b></p>
+
   <h4><b>Control Unit (CU)</b></h4>
 
    <img src="README_IMG's/Control_Unit.jpg">
 
    <br>
+
+   <ul>
+     <li>Remember the 4 bit opcode extracted from ROM/RAM? This is where it is analysed to determine which CPU operation to preform!</li>
+     <li>Based on AND gates and those little circles (reverses signal to simulate different 1 and 0 combinations and thus one of the 16 opcodes) it will trigger one of the output 's on the right hand side. In this case: COPY</li>
+     <li>If the opcode is from 0-9, it will NOT trigger one of the outputs, but instead activate ALU_RUN. This tells the ALU that a calculation needs to take place. It also sends out an ALUOP, which will be used again to determine which ALU operation takes place</li>
+     <li><b>For more details on what each opcode does, head to the instruction set section!</b></li>
+   </ul>
 
   <h4><b>Flag Register (FR)</b></h4>
 
@@ -115,11 +146,21 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
    <br>
 
+   <ul>
+     <li>The Flag register does not store traditional data, but results of particular single bit results from the ALU. Such as:</li>
+     <ul>
+       <li>Comparisons -> 120 = 120 -> Outputs true/1 </li>
+       <li>Overflow. Number bigger than 2^16 (65535 values), turns overflow to true -> CARRY</li>
+       <li>Whether a value is zero (10 maybe minused by 1 each cycle in the CPU, looping logic until the set value is 0. Each time you may check 10 against 0, and if its 0, then the ZERO register becomes 1!)</li>
+     </ul>
+   </ul>
+
   <h4><b>ROM Immediate</b></h4>
 
    <img src="README_IMG's/ROM_IM.jpg">
 
    <br>
+
 
   <h4><b>RAM Immediate</b></h4>
 
@@ -127,11 +168,15 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
    <br>
 
+  <p><b>Both share the same purpose, takinb both 4 bit splits of the 16-bit instruction, and combining them. This way, you can create an 8-bit immediate value to store into register. Most intial values before calculation are 8-bit immediate values, which are than combined or mathematically calculated to create an appropriate 16-bit memory location etc...</b></p>
+
   <h4><b>General Register (GR)</b></h4>
 
    <img src="README_IMG's/General_Register.jpg">
 
    <br>
+
+   <p></p>
 
   <h4><b>Arithmetic Logic Unit (ALU)</b></h4>
 
