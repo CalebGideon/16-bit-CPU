@@ -14,7 +14,8 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
     </li>
     <li><a href="#section2">Instruction Set</a>
       <ul>
-        <li><a href="#download">Download -> Table of Opcodes</a></li>
+        <li><a href="#opcodes">Table of Opcodes</a></li>
+        <li><a href="#parameters">Compound Opcode Complexity</a></li>
         <li><a href="#parameters">Example programs</a></li>
         <li><a href="#creating">Custom Assembly Language</a></li>
       </ul>
@@ -22,32 +23,31 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
   </ul>
 </div>
 
+<div>
+
+<h3 id="opcodes>Table of Opcodes</h3>
+<p>Due to the CPU instruction register memory address being split into 4 bits for its opcode, the CPU only possesses 16. Additional functionalities such as swapping registers can be achieved via compound opcode complexity (COC -> discussed later. E.G. for now, two or commands and an additional register simulating SWAP)</p>
+
+<p><b>Below is a table consisting of the different opcodes, their hex equivalent, and the description of what each achieves</b></p>
+</div>
 
 ### Opcodes
 
 | Opcode | Instruction | Description               |
 |--------|-------------|---------------------------|
 | 0x00   | NOP         | No operation              |
-| 0x01   | MOV         | Move data                 |
-| 0x02   | ADD         | Add two operands          |
-| 0x03   | SUB         | Subtract two operands     |
-| 0x04   | MUL         | Multiply two operands     |
-| 0x05   | DIV         | Divide two operands       |
-| 0x06   | JMP         | Jump to address           |
-| 0x07   | JEQ         | Jump if equal             |
-| 0x08   | JNE         | Jump if not equal         |
-| 0x09   | AND         | Logical AND                |
-| 0x0A   | OR          | Logical OR                 |
-| 0x0B   | XOR         | Logical XOR                |
-| 0x0C   | NOT         | Logical NOT                |
-| 0x0D   | CMP         | Compare two operands      |
-| 0x0E   | PUSH        | Push value onto stack     |
-| 0x0F   | POP         | Pop value from stack      |
-| 0x10   | CALL        | Call subroutine           |
-| 0x11   | RET         | Return from subroutine    |
-| 0x12   | INC         | Increment                  |
-| 0x13   | DEC         | Decrement                  |
-| 0x14   | SHL         | Shift left                 |
-| 0x15   | SHR         | Shift right                |
-| 0x16   | MULS        | Multiply with signed      |
-| 0x17   | DIVS        | Divide with signed        |
+| 0x01   | AND         | Logical AND               |
+| 0x02   | OR          | Logical OR                |
+| 0x03   | XOR         | Logical XOR               |
+| 0x04   | XNOR        | Logical XNOR              |
+| 0x05   | ADD         | Adds two numbers          |
+| 0x06   | SUB         | minus two numbers         |
+| 0x07   | MUL         | multiply two numbers      |
+| 0x08   | DIV         | divide two numbers        |
+| 0x09   | COMP        | Compare two numbers       |
+| 0x0A   | LOAD        | Load from register to RAM |
+| 0x0B   | JUMP_NZERO  | Jumps if not zero         |
+| 0x0C   | WRITE       | Writes ROM/RAM to register |
+| 0x0D   | BOUNCER     | Jumps if not last condition |
+| 0x0E   | JUMP        | Uncondiitonal jump        |
+| 0x0F   | COPY        | copies ROM into RAM       |
