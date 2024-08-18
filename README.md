@@ -41,13 +41,13 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 | 0x03   | XOR         | Logical XOR               |
 | 0x04   | XNOR        | Logical XNOR              |
 | 0x05   | ADD         | Adds two numbers          |
-| 0x06   | SUB         | minus two numbers         |
-| 0x07   | MUL         | multiply two numbers      |
-| 0x08   | DIV         | divide two numbers        |
-| 0x09   | COMP        | Compare two numbers       |
-| 0x0A   | LOAD        | Load from register to RAM |
+| 0x06   | SUB         | Subtracts two numbers     |
+| 0x07   | MUL         | Multiplies two numbers    |
+| 0x08   | DIV         | Divides two numbers       |
+| 0x09   | COMP        | Compares two numbers      |
+| 0x0A   | LOAD        | Loads data from register to RAM |
 | 0x0B   | JUMP_NZERO  | Jumps if not zero         |
-| 0x0C   | WRITE       | Writes ROM/RAM to register |
-| 0x0D   | BOUNCER     | Jumps if not last condition |
-| 0x0E   | JUMP        | Uncondiitonal jump        |
-| 0x0F   | COPY        | copies ROM into RAM       |
+| 0x0C   | WRITE       | Writes data from ROM/RAM to register |
+| 0x0D   | BOUNCER     | Jumps based on last condition |
+| 0x0E   | JUMP        | Unconditional jump        |
+| 0x0F   | COPY        | Copies data from ROM to RAM |
