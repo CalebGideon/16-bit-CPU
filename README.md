@@ -52,6 +52,8 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 <div>
   <h3 id="pipeline">Pipeline</h3>
 
+  <img src="Overview_CPU.jpg">
+  
   <h4><b>Program Counter (PC)</b></h4>
 
   <h4><b>Read Only Memory (ROM)</b></h4>
