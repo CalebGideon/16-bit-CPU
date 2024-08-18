@@ -1,0 +1,14 @@
+v2.0 raw
+COPY
+LOAD 30 R0    # Counter
+LOAD 0 R1    # First number
+LOAD 1 R2    # Second number
+LOAD 5 R3    # Jump address
+OR R2 RZERO RDISPLAY # Use OR to store
+ADD R1 R2 R4
+OR R2 RZERO R1 # Move R2 to R1
+OR R4 RZERO R2 # Move R4 (sum) to R2
+SUB R0 RINC R0
+COMP R0 RZERO CZERO
+JUMP_NZERO 0 R3
+COPY
