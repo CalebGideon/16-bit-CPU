@@ -168,7 +168,7 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
    <br>
 
-  <p><b>Both share the same purpose, takinb both 4 bit splits of the 16-bit instruction, and combining them. This way, you can create an 8-bit immediate value to store into register. Most intial values before calculation are 8-bit immediate values, which are than combined or mathematically calculated to create an appropriate 16-bit memory location etc...</b></p>
+  <p><b>Both share the same purpose, taking both 4-bit splits of the 16-bit instruction, and combining them. This way, you can create an 8-bit immediate value to store in the register. Most initial values before calculation are 8-bit immediate values, which are then combined or mathematically calculated to create an appropriate 16-bit memory location etc...</b></p>
 
   <h4><b>General Register (GR)</b></h4>
 
@@ -176,7 +176,22 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
    <br>
 
-   <p></p>
+   <ol>
+     <li>The general register starts by receiving the decoded instruction register from either the active ROM or RAM.</li>
+     <ul>
+       <li>8 of the 4 bits are distributed as specific register index's (4 bits-> 16 registers)</li>
+       <li>The last 4 bits are used to specific a 4-bit index register to store the result of general register calculations sent to the ALU</li>
+       <li><b>E.g. REG_A_OUT ADD REG_B_OUT -> stored in register selected based on REG_WRITE</b></li>
+     </ul>
+     <li>The general register possesses an ENABLE_WRITE flag that only allows writing to register if a particular opcode triggers the write enable logic.</li>
+     <li>There are several unique registers ranging from R12 to R15</li>
+     <ul>
+       <li>R12 -> RZERO -> An unwritable register guaranteed to always be zero. Good for zero jump checking</li>
+       <li>R13 -> RINC -> An unwritable register guaranteed to always be 1. Good for increment and decrement without having to waste an assembly line storing an immediate value</li>
+       <li>R14 -> RDIS -> a special register outputting to the visual display component at end of clock cycle</li>
+       <li>R15 -> RSTA -> a special register</li>
+     </ul>
+   </ol>
 
   <h4><b>Arithmetic Logic Unit (ALU)</b></h4>
 
