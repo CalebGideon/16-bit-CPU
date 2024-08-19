@@ -199,17 +199,49 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
    <br>
 
+   <p><b>The ALU provides several features for arithmetic and logical calculations, with two primary outputs to either the general register or flag register for 16-bit results or 1-bit comparison resolutions respectively. The operations are chosen based on the 4-bit opcode ALSO sent to the CU, and are as follows (top to bottom):</b></p>
+
+  <h3> 16-BIT Arithmetic/Logical operations (sent to general register)
+   <ul>
+     <li>Nothing: Placeholder for NO_OPERATION</li>
+     <li>AND: A bitwise Logical AND function</li>
+     <li>OR: A bitwise Logical OR function</li>
+     <li>XOR: A bitwise Logical XOR function</li>
+     <li>XNOR: A bitwise Logical XNOR function</li>
+     <li>ADD: An addition function with a carry output flag for overflow</li>
+     <li>SUB: A subtraction function with a carry output flag for overflow</li>
+     <li>MUL: A multiplication function</li>
+     <li>DIV: A division function</li>
+   </ul>
+  </h3>
+
+  <h3> 1-BIT Comparison operations (sent to flag register) (A compared to B)
+   <ul>
+     <li>Greater than/li>
+     <li>Greater than/equal to</li>
+     <li>Equal to</li>
+     <li>Not equal to</li>
+     <li>Less than/equal to</li>
+     <li>less than: <b>REGULAR COMPARISON</b><li>
+     <li>less than: <b>RZERO COMPARISON</b></li>
+   </ul>
+  </h3>
+  
   <h4><b>Double Dabble Pipeline (DDP)</b></h4>
 
    <img src="README_IMG's/View_Pipe.jpg">
 
    <br>
 
+   <p>Utilising the Double Dabble Algorithm, binary from the RDISPLAY register is sent to the double dabble sub-circuit, where the program shifts a 16-bit value int Binary Coded Decimal format.</p>
+
   <h4><b>Visual Display</b></h4>
   
    <img src="README_IMG's/Visual_Dis.jpg">
 
    <br>
+
+   <p>The individual calculated digits of the Double Dabble algorithm, e.g. 175, are each sent to their own subcircuit to determine which light of a seven LED display are to be lit, thus converting Binary Coded Decimal to Decimal</p>
   
 </div>
 
