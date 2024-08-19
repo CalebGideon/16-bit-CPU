@@ -237,6 +237,7 @@ A functioning 16-BIT unsigned CPU made in Logisim with a visual display for the 
 
   <h3> 16-BIT Arithmetic/Logical operations (sent to general register)
    <ul>
+     <hr>
      <li>Nothing: Placeholder for NO_OPERATION</li>
      <li>AND: A bitwise Logical AND function</li>
      <li>OR: A bitwise Logical OR function</li>
@@ -253,12 +254,13 @@ A functioning 16-BIT unsigned CPU made in Logisim with a visual display for the 
 
   <h3> 1-BIT Comparison operations (sent to flag register) (A compared to B)
    <ul>
+     <hr>
      <li>Greater than/li>
      <li>Greater than/equal to</li>
      <li>Equal to</li>
      <li>Not equal to</li>
      <li>Less than/equal to</li>
-     <li>less than: <b>REGULAR COMPARISON</b><li>
+     <li>less than: <b>REGULAR COMPARISON</b></li>
      <li>less than: <b>RZERO COMPARISON</b></li>
    </ul>
   </h3>
