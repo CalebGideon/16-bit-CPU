@@ -1,6 +1,6 @@
 # 16-bit-CPU with Custom Assembly Language
 
-A functioning 16-BIT unisigned CPU made in Logisim with visual display for output of numerical calculations. Supports complex jumping, bitwise operations with custom assembly language writing
+A functioning 16-BIT unsigned CPU made in Logisim with a visual display for the output of numerical calculations. Supports complex jumping, and bitwise operations with custom assembly language writing
 
 <div>
   <h2>Table of Contents</h2>
@@ -27,7 +27,7 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
   <h3 id="purpose">Purpose</h3>
   <p>The CPU design is developed entirely in Logisim: <a = "https://sourceforge.net/projects/circuit/"><b>Click here to download the latest version</b></a></p>
   <br>
-  <p>This repository provides a detailed look into the development for a 16-bit unsigned CPU. The idea is to teach people about the fundamentals of hardware development, in addition to showcasing assembly to machine code conversion, which tends to be overlooked by most CS graduates. The repository will take a look at:</p>
+  <p>This repository provides a detailed look into the development of a 16-bit unsigned CPU. The idea is to teach people about the fundamentals of hardware development, in addition to showcasing assembly to machine code conversion, which tends to be overlooked by most CS graduates. The repository will take a look at:</p>
   <ul>
     <li>The different opcodes a CPU might use</li>
     <li>The pipeline of a CPU including: </li>
@@ -45,20 +45,22 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <br>
 
-  <p><b>Hopefully you learn something, and feel free to download the CPU in full. If you're uploading it to people, please provide me credit, but otherwise, rip it to shreds and learn as much as you can!</b></p>
+  <p><b>Hopefully you learn something and feel free to download the CPU in full. If you're uploading it to people, please provide me credit, but otherwise, rip it to shreds and learn as much as you can!</b></p>
   
 </div>
 
 <div>
   <h3 id="pipeline">Pipeline</h3>
 
+  <hr>
+
   <img src="Overview_CPU.jpg">
 
-  <br>
+  <hr>
 
   <div>
 
-  <p><b>NOTE!</b>Hopefully with time, this README will cover every aspect of this image, as the complexity can seem incredibly daunting, but with adequate knowledge of each component, the process of CPU design is learnable. While this document will not go over what multiplexers are, demultiplexers, tunnels, bus's, sub-circuits, spillters, and the basics of Logisim, I will try my best to go over the abstractable concepts of what exactly the CPU needs</p>
+  <p><b>NOTE!</b>Hopefully with time, this README will cover every aspect of this image, as the complexity can seem incredibly daunting, but with adequate knowledge of each component, the process of CPU design is learnable. While this document will not go over what multiplexers are, demultiplexers, tunnels, buses, sub-circuits, splitters, and the basics of Logisim, I will try my best to go over the abstractable concepts of what exactly the CPU needs</p>
 
   </div>
 
@@ -66,9 +68,11 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
   
   <h4><b>Program Counter (PC)</b></h4>
 
+  <hr>
+
   <img src="README_IMG's/PC.jpg">
 
-  <br>
+  <hr>
 
   <p><b>It all begins with a clock. MASTER_CLOCK ticks, incrementing the entire CPU's pipeline by one iteration based on a High/Low frequency shift. On the positive tick, the following occurs:</b></p>
 
@@ -88,9 +92,11 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <h4><b>Read Only Memory (ROM)</b></h4>
 
+  <hr>
+
   <img src="README_IMG's/ROM.jpg">
 
-  <br>
+  <hr>
 
   <p><b>The ROM stores the startup of a program. If you also don't have a harddrive, it can be used to store programs which get fed into the RAM. Each ROM gets sent instructions -> Calculate fibonacci, where the first and last instructions are always a COPY. When COPY is first reached (Start of ROM), it tells the program to copy all of the ROM into the RAM to run the program, once the second COPY is reached (end of ROM), it sets RAM active to true, and the PC NOW points to the RAM to increment that. </b></p>
 
@@ -106,9 +112,11 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
   
   <h4><b>Random Access Memory (RAM)</b></h4>
 
+  <hr>
+
    <img src="README_IMG's/RAM.jpg">
 
-   <br>
+  <hr>
 
    <p><b>Why ROM and RAM? ROM does not allow writing to memory. In order to store values back into ROM and create a program that can run indefinatley and be useful, the ROM's data has to be sent to RAM for RAM to process each memory instruction. It uses the same splitter functionality like ROM, with the additive of an input "D" that alows the CPU to WRITE to an empty memory addres</b></p>
 
@@ -116,9 +124,11 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
   
   <h4><b>RAM Check</b></h4>
 
+  <hr>
+
    <img src="README_IMG's/RAMON.jpg">
 
-   <br>
+  <hr>
 
   <ul>
     <li>The single green 0 indicates a D Flop -> Like a general register, but only storing a single bit 1/0 -> True/False.</li>
@@ -129,17 +139,21 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <h4><b>COPY</b></h4>
 
+  <hr>
+
    <img src="README_IMG's/COPY.jpg">
 
-   <br>
+  <hr>
 
    <p><b>Here we can see an active signal from the COPY opcode (More on the output singals from Control Unit later) When it becomes true, it sets the ROM to copy its contents over to RAM. When off, it means that it will be sent to the rest of the CPU. The RAM_ON D Flip's 1/true signal as stated before, is sent through, and if so, instead resets the entire program when RAM reach's the copy instead.</b></p>
 
   <h4><b>Control Unit (CU)</b></h4>
 
+  <hr>
+
    <img src="README_IMG's/Control_Unit.jpg">
 
-   <br>
+  <hr>
 
    <ul>
      <li>Remember the 4 bit opcode extracted from ROM/RAM? This is where it is analysed to determine which CPU operation to preform!</li>
@@ -150,9 +164,11 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <h4><b>Flag Register (FR)</b></h4>
 
+  <hr>
+
    <img src="README_IMG's/Flag_Register.jpg">
 
-   <br>
+  <hr>
 
    <ul>
      <li>The Flag register does not store traditional data, but results of particular single bit results from the ALU. Such as:</li>
@@ -165,24 +181,30 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <h4><b>ROM Immediate</b></h4>
 
+  <hr>
+
    <img src="README_IMG's/ROM_IM.jpg">
 
-   <br>
+  <hr>
 
 
   <h4><b>RAM Immediate</b></h4>
 
+  <hr>
+
    <img src="README_IMG's/RAM_IM.jpg">
 
-   <br>
+  <hr>
 
   <p><b>Both share the same purpose, taking both 4-bit splits of the 16-bit instruction, and combining them. This way, you can create an 8-bit immediate value to store in the register. Most initial values before calculation are 8-bit immediate values, which are then combined or mathematically calculated to create an appropriate 16-bit memory location etc...</b></p>
 
   <h4><b>General Register (GR)</b></h4>
 
+  <hr>
+
    <img src="README_IMG's/General_Register.jpg">
 
-   <br>
+  <hr>
 
    <ol>
      <li>The general register starts by receiving the decoded instruction register from either the active ROM or RAM.</li>
@@ -203,9 +225,11 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <h4><b>Arithmetic Logic Unit (ALU)</b></h4>
 
+  <hr>
+
    <img src="README_IMG's/ALU.jpg">
 
-   <br>
+  <hr>
 
    <p><b>The ALU provides several features for arithmetic and logical calculations, with two primary outputs to either the general register or flag register for 16-bit results or 1-bit comparison resolutions respectively. The operations are chosen based on the 4-bit opcode ALSO sent to the CU, and are as follows (top to bottom):</b></p>
 
@@ -241,17 +265,21 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
   
   <h4><b>Double Dabble Pipeline (DDP)</b></h4>
 
+  <hr>
+
    <img src="README_IMG's/View_Pipe.jpg">
 
-   <br>
+  <hr>
 
    <p>Utilising the Double Dabble Algorithm, binary from the RDISPLAY register is sent to the double dabble sub-circuit, where the program shifts a 16-bit value int Binary Coded Decimal format.</p>
 
   <h4><b>Visual Display</b></h4>
+
+  <hr>
   
    <img src="README_IMG's/Visual_Dis.jpg">
 
-   <br>
+  <hr>
 
    <p>The individual calculated digits of the Double Dabble algorithm, e.g. 175, are each sent to their own subcircuit to determine which light of a seven LED display are to be lit, thus converting Binary Coded Decimal to Decimal</p>
   
