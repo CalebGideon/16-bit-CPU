@@ -68,6 +68,8 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <img src="README_IMG's/PC.jpg">
 
+  <br>
+
   <p><b>It all begins with a clock. MASTER_CLOCK ticks, incrementing the entire CPU's pipeline by one iteration based on a High/Low frequency shift. On the positive tick, the following occurs:</b></p>
 
   <ol>
@@ -88,6 +90,8 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
   <img src="README_IMG's/ROM.jpg">
 
+  <br>
+
   <p><b>The ROM stores the startup of a program. If you also don't have a harddrive, it can be used to store programs which get fed into the RAM. Each ROM gets sent instructions -> Calculate fibonacci, where the first and last instructions are always a COPY. When COPY is first reached (Start of ROM), it tells the program to copy all of the ROM into the RAM to run the program, once the second COPY is reached (end of ROM), it sets RAM active to true, and the PC NOW points to the RAM to increment that. </b></p>
 
    <p><b>Notice the seperating splitters after the instruction is outputted at "D"?</b> This is because 16-bit instructions are split into usually 4 thingsL</p>
@@ -104,6 +108,8 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
    <img src="README_IMG's/RAM.jpg">
 
+   <br>
+
    <p><b>Why ROM and RAM? ROM does not allow writing to memory. In order to store values back into ROM and create a program that can run indefinatley and be useful, the ROM's data has to be sent to RAM for RAM to process each memory instruction. It uses the same splitter functionality like ROM, with the additive of an input "D" that alows the CPU to WRITE to an empty memory addres</b></p>
 
   <br>
@@ -111,6 +117,8 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
   <h4><b>RAM Check</b></h4>
 
    <img src="README_IMG's/RAMON.jpg">
+
+   <br>
 
   <ul>
     <li>The single green 0 indicates a D Flop -> Like a general register, but only storing a single bit 1/0 -> True/False.</li>
@@ -201,6 +209,8 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
 
    <p><b>The ALU provides several features for arithmetic and logical calculations, with two primary outputs to either the general register or flag register for 16-bit results or 1-bit comparison resolutions respectively. The operations are chosen based on the 4-bit opcode ALSO sent to the CU, and are as follows (top to bottom):</b></p>
 
+   <br>
+
   <h3> 16-BIT Arithmetic/Logical operations (sent to general register)
    <ul>
      <li>Nothing: Placeholder for NO_OPERATION</li>
@@ -214,6 +224,8 @@ A functioning 16-BIT unisigned CPU made in Logisim with visual display for outpu
      <li>DIV: A division function</li>
    </ul>
   </h3>
+
+  <br>
 
   <h3> 1-BIT Comparison operations (sent to flag register) (A compared to B)
    <ul>
