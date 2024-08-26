@@ -1,6 +1,6 @@
 # 🖩 16-bit-CPU with Custom Assembly Language 🖩
 
-A functioning 16-BIT unsigned CPU made in Logisim with a visual display for the output of numerical calculations. Supports complex jumping, and bitwise operations with custom assembly language writing
+A functioning 16-BIT unsigned CPU made in Logisim with a visual display for the output of numerical calculations. Supports complex jumping, and bitwise operations with a custom assembly language.
 
 <div>
   <h2>Table of Contents</h2>
